@@ -1,0 +1,59 @@
+<article class="article-view post-full">
+    <h1 class="article-title">
+        <%= page.title %>
+    </h1>
+
+    <div class="article-meta">
+        <span title="<%= date(page.date, 'YYYY-MM-DD HH:mm') %>"><%= date(page.date, 'YYYY-MM-DD') %></span>
+        <% if (page.tags && page.tags.length) { %>
+            <span class="meta-sep">·</span>
+            <%- list_tags(page.tags, { show_count: false, style: 'none', separator: ', ' }) %>
+        <% } %>
+    </div>
+
+    <div class="article-content post-content">
+        <%- page.content %>
+    </div>
+</article>
+
+<% if (page.prev || page.next) { %>
+<nav class="post-nav">
+    <% if (page.prev) { %>
+        <a class="post-nav-item post-nav-prev" href="<%- url_for(page.prev.path) %>" rel="prev">
+            <span class="post-nav-dir"><span class="post-nav-arrow">‹</span> 上一篇</span>
+            <span class="post-nav-title"><%= page.prev.title %></span>
+        </a>
+    <% } else { %>
+        <span class="post-nav-item is-empty"></span>
+    <% } %>
+    <% if (page.next) { %>
+        <a class="post-nav-item post-nav-next" href="<%- url_for(page.next.path) %>" rel="next">
+            <span class="post-nav-dir">下一篇 <span class="post-nav-arrow">›</span></span>
+            <span class="post-nav-title"><%= page.next.title %></span>
+        </a>
+    <% } else { %>
+        <span class="post-nav-item is-empty"></span>
+    <% } %>
+</nav>
+<% } %>
+
+<!-- 下面是你添加的 Giscus 评论区代码 -->
+<section class="post-comments" style="margin-top: 30px;">
+    <h2 class="post-comments-title">评论</h2>
+    <div class="giscus"></div>
+    <script src="https://giscus.app/client.js"
+        data-repo="dijiayu2007/my-comments"
+        data-repo-id="R_kgDOVaUkoA"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVaUkoM4DJz-Y"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+</section>
