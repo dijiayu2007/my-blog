@@ -37,27 +37,23 @@
 </nav>
 <% } %>
 
-<!-- 👇 这里开始是 Waline 的大门 👇 -->
+<!-- 👇 干净的 Giscus 评论区 👇 -->
 <section class="post-comments" style="margin-top: 40px; margin-bottom: 40px;">
     <h2 class="post-comments-title" style="font-size: 1.2em; margin-bottom: 15px;">评论</h2>
-    <!-- 引入 Waline 的样式 -->
-    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
-    
-    <!-- Waline 的挂载点 -->
-    <div id="waline"></div>
-    
-    <!-- Waline 的初始化脚本 -->
-    <script type="module">
-      import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
-      init({
-        el: '#waline',
-        // ⚠️ 注意：下面这个链接，一定要换成你刚才在 Vercel 复制的那个真实链接！！！
-        serverURL: 'my-waline-beige.vercel.app', 
-        lang: 'zh-CN',
-        meta: ['nick', 'mail', 'link'], // 让路人填昵称、邮箱、网址
-        requiredMeta: ['nick', 'mail'], // 昵称和邮箱为必填项
-        login: 'disable', // 强制关闭登录，完全匿名评论
-        dark: 'html[data-theme="dark"]' // 自动适配暗色模式
-      });
+    <div class="giscus"></div>
+    <script src="https://giscus.app/client.js"
+        data-repo="dijiayu2007/my-comments"
+        data-repo-id="R_kgDOVaUkoA" 
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVaUkoM4DJz-Y"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
     </script>
 </section>
