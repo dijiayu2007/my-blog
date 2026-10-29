@@ -6,8 +6,7 @@
     </div>
 
     <%
-        // 本地化的目标站风格图标集合；无封面的文章按标题哈希确定性选一个，
-        // 视觉上"随机"分布但每篇文章固定不变（刷新不闪变）。
+        // 本地化的目标站风格图标集合
         var topicIcons = [
             'android.webp', 'apple2001.webp', 'chat.webp', 'discord.webp', 'faq.webp',
             'globe.webp', 'graphics.webp', 'language.webp', 'music.webp', 'software.webp',
@@ -23,9 +22,21 @@
     <ul class="file-list" id="postFileList">
         <% page.posts.forEach(function(post){ %>
         <%
-            var iconSrc = post.cover
-                ? url_for(post.cover)
-                : url_for('/image/icon/topic/' + pickIcon(post.path || post.title));
+            var iconSrc = '';
+            // 1. 如果你在文章开头写了 icon: xxx.webp，优先用你选的
+            if (post.icon) {
+                iconSrc = post.icon.indexOf('/') !== -1 
+                    ? url_for(post.icon) 
+                    : url_for('/image/icon/topic/' + post.icon);
+            } 
+            // 2. 如果没写 icon，但有封面图 cover，就用封面图
+            else if (post.cover) {
+                iconSrc = url_for(post.cover);
+            } 
+            // 3. 如果啥都没写，就用作者原本的“哈希随机”算法
+            else {
+                iconSrc = url_for('/image/icon/topic/' + pickIcon(post.path || post.title));
+            }
         %>
         <li class="file-row" onclick="location.href='<%- url_for(post.path) %>'" tabindex="0"
             data-date="<%= date(post.date, 'YYYYMMDDHHmmss') %>"
