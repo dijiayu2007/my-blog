@@ -13,6 +13,6 @@ icon: chat.webp
 
 图片：
 
-![塔斯汀汉堡](/images/hanbao.jpg)
+![塔斯汀汉堡](https://s41.ax1x.com/2026/10/29/pnyUzW9.jpg)
 
 下次尝尝他家的北京烤鸭堡。
