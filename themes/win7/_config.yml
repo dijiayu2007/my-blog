@@ -73,7 +73,7 @@ friends:
 
 # ---------- 顶部音乐播放器（横向玻璃条） ----------
 music:
-  enable: true
+  enable: false
   autoplay: false
   songs:
     # songs[0].url 为空则不渲染播放器；填上音频直链即可
