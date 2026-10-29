@@ -29,13 +29,23 @@ profile:
   author: 'D.'          # 留空则读站点 _config.yml 的 author
   avatar: '/image/a.jpg'          # 头像图片，如 /images/avatar.webp（放 source 目录下），留空用主题内置图标
   avatar_link: '/'    # 点击头像跳转的链接
-  social:             # 社交链接，link 为空的项不显示
+  social:             
     - name: Github
-      link: ''        # https://github.com/username
+      link: 'https://github.com/dijiayu2007'
       icon: /image/icon/github.webp
     - name: Bilibili
-      link: ''        # https://space.bilibili.com/youruid
+      link: 'https://space.bilibili.com/516388949'
       icon: /image/icon/bilibili.webp
+    - name: X
+      link: 'https://x.com/djy4jsw'
+      icon: /image/icon/X.png
+    - name: Instagram
+      link: 'https://www.instagram.com/djy5461851102'
+      icon: /image/icon/INS.png
+
+
+
+
 
 # ---------- 友情链接页（/links/，卡片墙，仅显示 Logo + 站名） ----------
 # 新建 source/links/index.md（layout: links）即可访问 /links/；数据来自这里。
