@@ -77,10 +77,10 @@ music:
   autoplay: false
   songs:
     # songs[0].url 为空则不渲染播放器；填上音频直链即可
-    - title: 'Sample Track'
-      artist: 'win7 theme'
-      cover: /image/icon/vista_photo_gallery.jpg
-      url: ''
+    - title: '鼓楼'
+      artist: '赵雷'
+      cover: /image/icon/cover.jpg
+      url: 'D:\Projects\my-blog\themes\win7\source\mp3\gulou.mp3'
 
 # ---------- 最近发表的附件窗口（可拖拽浮窗） ----------
 # 在文章 front-matter 里写 attachments 列表即可自动汇总到此窗口：
