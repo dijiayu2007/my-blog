@@ -17,6 +17,29 @@
     </div>
     <% } %>
 
+    <!-- 👇 融合 Win7 毛玻璃风格的日历时钟挂件 👇 -->
+    <div class="win7-widget" style="margin: 15px 10px; padding: 12px; background: rgba(255, 255, 255, 0.45); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); text-align: center; color: #333;">
+        <div id="widget-date" style="font-size: 13px; font-weight: bold; color: #3c7fb1; margin-bottom: 5px;">加载中...</div>
+        <div id="widget-time" style="font-size: 20px; font-weight: 300; letter-spacing: 1px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">00:00:00</div>
+    </div>
+
+    <script>
+        function updateWidget() {
+            var now = new Date();
+            var days = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            var dateString = now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日 " + days[now.getDay()];
+            document.getElementById('widget-date').innerText = dateString;
+            
+            var h = now.getHours().toString().padStart(2, '0');
+            var m = now.getMinutes().toString().padStart(2, '0');
+            var s = now.getSeconds().toString().padStart(2, '0');
+            document.getElementById('widget-time').innerText = h + ":" + m + ":" + s;
+        }
+        updateWidget();
+        setInterval(updateWidget, 1000);
+    </script>
+    <!-- 👆 挂件结束 👆 -->
+
     <ul class="tree-view nav-tree">
         <li>
             <details open>
