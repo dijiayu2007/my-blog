@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
+title:  D.的 Daily Blog
+subtitle: 'Life, Travel & Everything'
+description: '记录'
 keywords:
-author: John Doe
-language: en
+author: D.
+language: zh-cn
 timezone: ''
 
 # URL
