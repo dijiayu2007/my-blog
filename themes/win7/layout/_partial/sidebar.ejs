@@ -17,59 +17,22 @@
     </div>
     <% } %>
 
-    <!-- 👇 融合 Win7 毛玻璃风格的日历时钟挂件 👇 -->
-    <div class="win7-widget" style="margin: 15px 10px; padding: 12px; background: rgba(255, 255, 255, 0.45); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); text-align: center; color: #333;">
-        <div id="widget-date" style="font-size: 13px; font-weight: bold; color: #3c7fb1; margin-bottom: 5px;">加载中...</div>
-        <div id="widget-time" style="font-size: 20px; font-weight: 300; letter-spacing: 1px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">00:00:00</div>
-    </div>
-
-    <script>
-        function updateWidget() {
-            var now = new Date();
-            var days = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
-            var dateString = now.getFullYear() + "年" + (now.getMonth() + 1) + "月" + now.getDate() + "日 " + days[now.getDay()];
-            document.getElementById('widget-date').innerText = dateString;
-            
-            var h = now.getHours().toString().padStart(2, '0');
-            var m = now.getMinutes().toString().padStart(2, '0');
-            var s = now.getSeconds().toString().padStart(2, '0');
-            document.getElementById('widget-time').innerText = h + ":" + m + ":" + s;
-        }
-        updateWidget();
-        setInterval(updateWidget, 1000);
-    </script>
-    <!-- 👆 挂件结束 👆 -->
-
     <ul class="tree-view nav-tree">
         <li>
             <details open>
                 <summary>导航</summary>
                 <ul>
-                    <li>
-                        <a href="<%- url_for('/') %>" class="<%= is_home() ? 'nav-active' : '' %>">
-                            <img src="<%- url_for('/image/icon/home.ico') %>" alt="" class="nav-ico"> 主页
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<%- url_for('/archives') %>" class="<%= (is_archive() || is_current('archives')) ? 'nav-active' : '' %>">
-                            <img src="<%- url_for('/image/icon/vista_book_1.jpg') %>" alt="" class="nav-ico"> 归档
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<%- url_for('/tags') %>" class="<%= (is_tag() || is_current('tags')) ? 'nav-active' : '' %>">
-                            <img src="<%- url_for('/image/icon/topic/language.webp') %>" alt="" class="nav-ico"> 标签
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<%- url_for('/about') %>" class="<%= is_current('about') ? 'nav-active' : '' %>">
-                            <img src="<%- url_for('/image/icon/vista_pc_1.jpg') %>" alt="" class="nav-ico"> 关于
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<%- url_for('/links') %>" class="<%= is_current('links') ? 'nav-active' : '' %>">
-                            <img src="<%- url_for('/image/icon/vista_messenger.jpg') %>" alt="" class="nav-ico"> 友情链接
-                        </a>
-                    </li>
+                    <li><a href="<%- url_for('/') %>" class="<%= is_home() ? 'nav-active' : '' %>"><img src="<%- url_for('/image/icon/home.ico') %>" alt="" class="nav-ico"> 主页</a></li>
+                    <li><a href="<%- url_for('/archives') %>" class="<%= (is_archive() || is_current('archives')) ? 'nav-active' : '' %>"><img src="<%- url_for('/image/icon/vista_book_1.jpg') %>" alt="" class="nav-ico"> 归档</a></li>
+                    <li><a href="<%- url_for('/tags') %>" class="<%= (is_tag() || is_current('tags')) ? 'nav-active' : '' %>"><img src="<%- url_for('/image/icon/topic/language.webp') %>" alt="" class="nav-ico"> 标签</a></li>
+                    <li><a href="<%- url_for('/photos') %>" class="<%= is_current('photos') ? 'nav-active' : '' %>"><img src="<%- url_for('/image/icon/vista_photo_gallery.jpg') %>" alt="" class="nav-ico"> 相册</a></li>
+                    
+                    <!-- 日历和附件按钮 -->
+                    <li><a href="javascript:void(0);" onclick="toggleWin7Calendar()"><img src="<%- url_for('/image/icon/vista_book_1.jpg') %>" alt="" class="nav-ico"> 日历</a></li>
+                    <li><a href="javascript:void(0);" onclick="toggleWin7Attach()"><img src="<%- url_for('/image/vista/ui/portal_attach.webp') %>" alt="" class="nav-ico"> 附件</a></li>
+
+                    <li><a href="<%- url_for('/about') %>" class="<%= is_current('about') ? 'nav-active' : '' %>"><img src="<%- url_for('/image/icon/vista_pc_1.jpg') %>" alt="" class="nav-ico"> 关于</a></li>
+                    <li><a href="<%- url_for('/links') %>" class="<%= is_current('links') ? 'nav-active' : '' %>"><img src="<%- url_for('/image/icon/vista_messenger.jpg') %>" alt="" class="nav-ico"> 友情链接</a></li>
                 </ul>
             </details>
         </li>
@@ -80,11 +43,7 @@
                 <ul>
                     <% theme.profile.social.forEach(function(item) { %>
                         <% if (item.link) { %>
-                        <li>
-                            <a href="<%= url_for(item.link) %>" target="_blank" rel="noopener">
-                                <img src="<%= url_for(item.icon) %>" alt="" class="nav-ico"> <%= item.name %>
-                            </a>
-                        </li>
+                        <li><a href="<%= url_for(item.link) %>" target="_blank" rel="noopener"><img src="<%= url_for(item.icon) %>" alt="" class="nav-ico"> <%= item.name %></a></li>
                         <% } %>
                     <% }); %>
                 </ul>
@@ -93,3 +52,171 @@
         <% } %>
     </ul>
 </aside>
+
+<!-- ================= 纯正 Win7 原生风格日历弹窗 ================= -->
+<div id="win7-calendar-widget" class="window glass active" style="display: none; position: fixed; top: 150px; right: 100px; width: 280px; z-index: 9999; padding: 0;">
+    <div class="title-bar" id="cal-drag-header" style="cursor: move;">
+        <div class="title-bar-text">
+            <!-- 👇 换成和导航栏一模一样的图标 👇 -->
+            <img src="<%- url_for('/image/icon/vista_book_1.jpg') %>" width="16" height="16" style="margin-right: 5px;" alt=""> 日期和时间
+        </div>
+        <div class="title-bar-controls">
+            <button aria-label="Close" onclick="toggleWin7Calendar()"></button>
+        </div>
+    </div>
+    
+    <div class="window-body" style="padding: 0; background: #f0f0f0; border: 1px solid #ccc;">
+        <div style="padding: 15px 15px 5px 15px;">
+            <div id="cal-main-time" style="font-size: 24px; font-weight: 300; color: #333; margin-bottom: 5px;">12:00:00</div>
+            <div id="cal-main-date" style="font-size: 13px; color: #666;">2026年10月29日 星期四</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px;">
+            <!-- 👇 去掉了强制样式，让 7.css 自动渲染成玻璃按钮 👇 -->
+            <button onclick="changeMonth(-1)" style="padding: 2px 10px; font-weight: bold;">&lt;</button>
+            <div id="cal-month-year" style="font-weight: bold; color: #333; font-size: 14px;">2026年 10月</div>
+            <button onclick="changeMonth(1)" style="padding: 2px 10px; font-weight: bold;">&gt;</button>
+        </div>
+
+        <div style="padding: 0 15px 15px 15px;">
+            <div id="cal-grid" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; text-align: center; font-size: 13px;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= 附件下载浮窗 ================= -->
+<%
+    var attachmentsMax = (theme.attachments && theme.attachments.max) || 10;
+    var allAttach = [];
+    var attachTitle = '最近发表的附件';
+    function pushAtt(list, att) { if (att && att.url) { list.push({ name: att.name || att.url.split('/').pop(), url: att.url, size: att.size || '' }); } }
+    
+    if (is_post()) {
+        attachTitle = '本文附件';
+        if (page.attachments && page.attachments.length) { page.attachments.forEach(function (att) { pushAtt(allAttach, att); }); }
+    } else {
+        site.posts.sort('-date').each(function (post) {
+            if (post.attachments && post.attachments.length) { post.attachments.forEach(function (att) { pushAtt(allAttach, att); }); }
+        });
+        allAttach = allAttach.slice(0, attachmentsMax);
+    }
+%>
+
+<% if (allAttach.length) { %>
+<div id="win7-attach-widget" class="window attach-gadget glass active" style="display: none; position: fixed; top: 200px; right: 150px; z-index: 9999; width: 300px;">
+    <div class="title-bar" id="attach-drag-header" style="cursor: move;">
+        <div class="title-bar-text">
+            <img class="attach-title-ico" src="<%- url_for('/image/vista/ui/portal_attach.webp') %>" alt="" width="16" height="16">
+            <%= attachTitle %>
+        </div>
+        <div class="title-bar-controls">
+            <button aria-label="Minimize" id="attachToggle"></button>
+            <button aria-label="Close" onclick="toggleWin7Attach()"></button>
+        </div>
+    </div>
+    <div class="window-body attach-body">
+        <div class="portal-side">
+            <% allAttach.forEach(function (att, i) { %>
+                <% if (i > 0) { %><hr class="dashed"><% } %>
+                <span class="portal-title-span portal-gensmall icon-clip" aria-hidden="true">&nbsp;</span>
+                <a class="portal-title-link" href="<%- url_for(att.url) %>" title="<%= att.name %>" target="_blank" rel="noopener"><%= att.name %></a>
+                <br class="portal-clear">
+                <% if (att.size) { %>
+                    <span class="portal-text-span">文件大小：</span><span class="portal-data-span portal-gensmall"><%= att.size %></span>
+                    <br class="portal-clear">
+                <% } %>
+            <% }); %>
+        </div>
+    </div>
+</div>
+<% } %>
+
+<!-- ================= 核心脚本 ================= -->
+<style>
+    .cal-weekday { font-weight: normal; color: #666; padding-bottom: 5px; font-size: 12px; border-bottom: 1px solid #ddd; margin-bottom: 5px; }
+    .cal-day { padding: 6px 0; border-radius: 2px; cursor: pointer; color: #333; border: 1px solid transparent; }
+    .cal-day:hover { border: 1px solid #aecff5; background: #eaf6fd; }
+    .cal-weekend { color: #d13333; }
+    .cal-today { background: linear-gradient(to bottom, #e0f0ff, #b3d9ff) !important; border: 1px solid #66aadd !important; font-weight: bold; color: #000; box-shadow: inset 0 1px 2px rgba(255,255,255,0.8); }
+    .cal-empty { padding: 6px 0; }
+</style>
+
+<script>
+    function toggleWin7Calendar() {
+        var widget = document.getElementById('win7-calendar-widget');
+        widget.style.display = (widget.style.display === 'none') ? 'block' : 'none';
+    }
+
+    function updateCalTime() {
+        var now = new Date();
+        var h = now.getHours().toString().padStart(2, '0');
+        var m = now.getMinutes().toString().padStart(2, '0');
+        var s = now.getSeconds().toString().padStart(2, '0');
+        document.getElementById('cal-main-time').innerText = h + ":" + m + ":" + s;
+    }
+    setInterval(updateCalTime, 1000);
+    updateCalTime();
+
+    var currentCalDate = new Date();
+    function renderWin7Calendar() {
+        var year = currentCalDate.getFullYear(), month = currentCalDate.getMonth();
+        document.getElementById('cal-month-year').innerText = year + "年 " + (month + 1) + "月";
+        
+        var daysInMonth = new Date(year, month + 1, 0).getDate(), firstDay = new Date(year, month, 1).getDay();
+        var weekDays = ['日', '一', '二', '三', '四', '五', '六'], html = '';
+        
+        weekDays.forEach(function(day, index) { 
+            var isWeekend = (index === 0 || index === 6) ? 'cal-weekend' : '';
+            html += '<div class="cal-weekday ' + isWeekend + '">' + day + '</div>'; 
+        });
+        
+        for (var i = 0; i < firstDay; i++) { html += '<div class="cal-empty"></div>'; }
+        
+        var today = new Date();
+        for (var d = 1; d <= daysInMonth; d++) {
+            var currentDayOfWeek = new Date(year, month, d).getDay();
+            var isToday = (d === today.getDate() && month === today.getMonth() && year === today.getFullYear());
+            
+            var classes = 'cal-day';
+            if (currentDayOfWeek === 0 || currentDayOfWeek === 6) classes += ' cal-weekend';
+            if (isToday) classes += ' cal-today';
+            
+            html += '<div class="' + classes + '">' + d + '</div>';
+        }
+        document.getElementById('cal-grid').innerHTML = html;
+
+        var days = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        document.getElementById('cal-main-date').innerText = year + "年" + (month + 1) + "月" + today.getDate() + "日 " + days[today.getDay()];
+    }
+
+    function changeMonth(offset) { currentCalDate.setMonth(currentCalDate.getMonth() + offset); renderWin7Calendar(); }
+    renderWin7Calendar();
+
+    function toggleWin7Attach() {
+        var widget = document.getElementById('win7-attach-widget');
+        if(widget) widget.style.display = (widget.style.display === 'none') ? 'block' : 'none';
+    }
+
+    function makeDraggable(elmnt, header) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        if (header) { header.onmousedown = dragMouseDown; } else { elmnt.onmousedown = dragMouseDown; }
+        function dragMouseDown(e) {
+            e = e || window.event; e.preventDefault();
+            pos3 = e.clientX; pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            document.onmousemove = elementDrag;
+        }
+        function elementDrag(e) {
+            e = e || window.event; e.preventDefault();
+            pos1 = pos3 - e.clientX; pos2 = pos4 - e.clientY;
+            pos3 = e.clientX; pos4 = e.clientY;
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            elmnt.style.right = 'auto'; elmnt.style.bottom = 'auto';
+        }
+        function closeDragElement() { document.onmouseup = null; document.onmousemove = null; }
+    }
+    makeDraggable(document.getElementById("win7-calendar-widget"), document.getElementById("cal-drag-header"));
+    var attachWidget = document.getElementById('win7-attach-widget');
+    if(attachWidget) { makeDraggable(attachWidget, document.getElementById("attach-drag-header")); }
+</script>

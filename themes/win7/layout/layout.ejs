@@ -21,6 +21,39 @@
     <% if (theme.favicon && theme.favicon.enable && theme.favicon.icon) { %>
         <link rel="icon" href="<%= url_for(theme.favicon.icon) %>">
     <% } %>
+
+    <!-- 👇 这里是你刚加的独立滚动区域锁定魔法 👇 -->
+    <style>
+        /* 1. 强制主窗口高度不能超出屏幕，并设置弹性布局 */
+        .main-window {
+            height: calc(100vh - 40px) !important; /* 留出上下边距，高度占满屏幕 */
+            max-height: 96vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 2. 让中间包裹“侧边栏”和“文章”的区域，撑满剩余空间 */
+        .window-body.explorer-body {
+            flex: 1 !important;
+            overflow: hidden !important; /* 绝对不让它整体滚动 */
+            display: flex;
+            height: 100%;
+        }
+
+        /* 3. 右侧文章内容区，独立开启垂直滚动条 */
+        .explorer-content {
+            flex: 1;
+            overflow-y: auto !important; /* 只有这里可以滚 */
+            height: 100%;
+        }
+
+        /* 4. 左侧导航栏固定高度，内容多了自己滚 */
+        .explorer-sidebar {
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+    </style>
 </head>
 
 <body>
@@ -59,7 +92,8 @@
                 <%- partial('_partial/widget') %>
             <% } %>
 
-            <%- partial('_partial/attachments') %>
+            <!-- 原作者的附件浮窗已被禁用，改由侧边栏手动呼出 -->
+            <!-- <%- partial('_partial/attachments') %> -->
 
             <div class="window-body explorer-body">
                 <%- partial('_partial/sidebar') %>
