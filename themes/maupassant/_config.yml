@@ -1,0 +1,187 @@
+# ==========================================
+# Maupassant 主题配置文件
+# ==========================================
+
+# ---------- 评论系统配置（为了不报错，必须留这些占位） ----------
+disqus:
+  enable: false
+  shortname: 
+  api: 
+  apikey: 
+  admin: 
+  admin_label: 
+uyan: 
+livere: 
+changyan: 
+changyan_conf: 
+gitalk: 
+  enable: false
+  owner: 
+  repo: 
+  client_id: 
+  client_secret: 
+  admin: 
+valine: 
+  enable: false
+  appid: 
+  appkey: 
+  serverURLs: 
+  notify: false
+  verify: false
+  placeholder: 说点什么吧...
+  avatar: "mm"
+  pageSize: 10
+  guest_info: nick,mail,link
+minivaline: 
+  enable: false
+  appId: 
+  appKey: 
+  placeholder: 写点评论...
+  adminEmailMd5: 
+  math: true
+  md: true
+  lang: zh-CN
+waline: 
+  enable: false
+  serverURL: 
+  pageSize: 30
+  wordLimit: 500
+  requiredMeta: ['nick','mail']
+  count: 5
+utterances: 
+  enable: false
+  repo: 
+  identifier: title
+  theme: github-light
+twikoo: 
+  enable: false
+  envId: 
+  region: 
+  path: 
+
+# ---------- 搜索与统计 ----------
+google_search: false 
+baidu_search: true 
+swiftype: 
+self_search: false 
+google_analytics: 
+baidu_analytics: 
+microsoft_clarity: 
+
+# ---------- 功能开关（已按你的需求开启） ----------
+fancybox: true ## ✅ 图片灯箱开启
+shareto: true ## ✅ 分享按钮开启
+dark: true ## ✅ 暗黑模式切换开启
+totop: true 
+copycode: true 
+toc_number: true 
+busuanzi: false 
+wordcount: false 
+widgets_on_small_screens: false 
+
+# 动态背景
+canvas_nest:
+  enable: false 
+  color: 
+  opacity: 
+  zIndex: 
+  count: 
+
+# 打赏
+donate:
+  enable: false 
+  github: 
+  alipay_qr: 
+  wechat_qr: 
+  btc_qr: 
+  btc_key: 
+  paypal_url: 
+
+# 版权
+post_copyright:
+  enable: false 
+  author: 
+  copyright_text: 
+
+show_category_count: false 
+love: false 
+plantuml: 
+  render: "PlantUMLServer" 
+  outputFormat: "svg" 
+external_css: false 
+post_content_length: 180 
+icp: 
+
+# ---------- 导航菜单 ----------
+menu:
+  - page: home
+    directory: .
+    icon: fa-home
+  - page: archive
+    directory: archives/
+    icon: fa-archive
+  - page: tags 
+    directory: tags/
+    icon: fa-tags
+  - page: history 
+    directory: history/
+    icon: fa-history
+    
+  - page: about
+    directory: about/
+    icon: fa-user
+  - page: rss
+    directory: atom.xml
+    icon: fa-rss
+
+# ---------- 侧边栏小部件 ----------
+widgets: 
+  - search
+  - info
+  - category
+  - recent_posts
+  - recent_comments
+  - links
+
+# ---------- 个人信息卡片 ----------
+info:
+  avatar: /img/avatar.png 
+  discription: 记录生活，分享热爱。 
+  outlinkitem: 
+    - name: github 
+      outlink: https://github.com/dijiayu2007 
+      message: GitHub 
+    - name: twitter 
+      outlink: https://x.com/djy4jsw 
+      message: X (Twitter) 
+    - name: envelope 
+      outlink: mailto:3299216684@qq.com 
+      message: 给我写信
+    - name: rss
+      outlink: /atom.xml
+      message: RSS订阅
+
+# ---------- 友情链接 ----------
+links:
+  - title: 
+    url: 
+    src: 
+    desc: 
+  - title: 
+    url: 
+    src: 
+    desc: 
+
+# ---------- 时间线 ----------
+timeline :
+  - num: 1
+    word: 2026/10/28-博客建立
+  - num: 2
+    word: 2026/10/30-第一次更换主题
+  - num: 3
+    word: 未完待续...
+
+# 静态文件路径
+js: js
+css: css
+version: 1.0.0

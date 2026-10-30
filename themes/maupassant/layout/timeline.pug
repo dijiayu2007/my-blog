@@ -1,0 +1,39 @@
+extends base
+block title
+  title= page.title + ' | ' + config.title
+block content
+  //- 原作者写这个模板时漏掉了配套的 CSS，这里帮你补上，让它绝对能显示
+  style.
+    .timeline-centered { position: relative; padding: 20px 0; margin-top: 30px; }
+    .timeline-centered:before { content: ' '; position: absolute; top: 0; bottom: 0; left: 20px; width: 4px; background: #eee; margin-left: -2px; }
+    .timeline-entry { position: relative; margin-bottom: 50px; }
+    .timeline-entry-inner { position: relative; padding-left: 60px; }
+    .timeline-icon { position: absolute; left: 0; top: 0; width: 40px; height: 40px; background: #3c7fb1; border-radius: 50%; text-align: center; line-height: 40px; color: #fff; font-weight: bold; z-index: 1; }
+    .timeline-label { background: #f9f9f9; padding: 20px; border-radius: 6px; border: 1px solid #eee; color: #333; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    .present, .born { font-weight: bold; color: #555; margin-left: 10px; }
+    .line, .dot_tp, .dot_bt { display: none; } /* 隐藏原版里没用的杂乱元素 */
+
+  .post
+    h1.post-title= page.title
+    .post-content
+      != page.content
+      section#process
+        .container
+          .row
+            .col-xs-12.col-sm-12.col-md-8.col-md-offset-2
+              .timeline-centered
+                .present 未来
+                
+                //- 循环读取配置，去掉了原版的 wow 动画类
+                - for (var i in theme.timeline)
+                  .timeline-entry
+                    .timeline-entry-inner
+                      .timeline-icon
+                        span.number= theme.timeline[i].num
+                      .timeline-label
+                        span.word= theme.timeline[i].word
+                        
+                .born 过去
+
+  if page.comments
+    include _partial/comments.pug
