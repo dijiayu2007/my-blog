@@ -28,6 +28,6 @@
     "hexo-theme-landscape": "^1.0.0"
   },
   "devDependencies": {
-    "sass": "^1.32.13"
+    "sass": "^1.106.1"
   }
 }
