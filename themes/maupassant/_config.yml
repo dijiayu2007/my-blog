@@ -145,7 +145,7 @@ widgets:
 
 # ---------- 个人信息卡片 ----------
 info:
-  avatar: /img/avatar.png 
+  avatar: /img/a.jpg
   discription: 记录生活，分享热爱。 
   outlinkitem: 
     - name: github 
