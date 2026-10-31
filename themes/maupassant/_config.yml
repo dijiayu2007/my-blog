@@ -55,7 +55,7 @@ utterances:
   theme: github-light
 twikoo: 
   enable: true 
-  envId: 'https://djy-twikoo.netlify.app/.netlify/functions/twikoo'
+  envId: 'https://djy-twikoo.netlify.app'
   region: 
   path: 
 
