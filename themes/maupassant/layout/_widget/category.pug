@@ -1,4 +1,10 @@
-.widget
-  .widget-title
-    i.fa.fa-folder-o= ' ' + __('categories')
-  != list_categories({show_count: theme.show_category_count})
+if theme.show_category_count
+  ul
+    each category in site.categories.sort('name').toArray()
+      li
+        a(href=url_for(category.path)) #{category.name} (#{category.length})
+else
+  ul
+    each category in site.categories.sort('name').toArray()
+      li
+        a(href=url_for(category.path)) #{category.name}
