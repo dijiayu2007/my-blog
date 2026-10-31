@@ -1,10 +1,10 @@
 if theme.show_category_count
   ul
-    each category in site.categories.sort('name').toArray()
+    each category in site.categories.toArray()
       li
         a(href=url_for(category.path)) #{category.name} (#{category.length})
 else
   ul
-    each category in site.categories.sort('name').toArray()
+    each category in site.categories.toArray()
       li
         a(href=url_for(category.path)) #{category.name}
