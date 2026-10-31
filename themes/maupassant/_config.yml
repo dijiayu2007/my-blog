@@ -54,7 +54,7 @@ utterances:
   identifier: title
   theme: github-light
 twikoo: 
-  enable: false
+  enable: true 
   envId: 
   region: 
   path: 
