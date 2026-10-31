@@ -1,10 +1,2 @@
-if theme.show_category_count
-  ul
-    each category in site.categories.toArray()
-      li
-        a(href=url_for(category.path)) #{category.name} (#{category.length})
-else
-  ul
-    each category in site.categories.toArray()
-      li
-        a(href=url_for(category.path)) #{category.name}
+ul
+  != list_categories({ show_count: theme.show_category_count, style: 'none', separator: ' ' })
