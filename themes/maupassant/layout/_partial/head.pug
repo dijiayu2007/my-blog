@@ -12,8 +12,11 @@ head
   link(rel='stylesheet', type='text/css', href='https://unpkg.com/purecss/build/grids-responsive-min.css')
   link(rel='stylesheet', href='https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css')
   script(type='text/javascript', src='https://unpkg.com/jquery/dist/jquery.min.js')
-  link(rel='icon', mask='',sizes='any', href=url_for('favicon.ico'))
-  link(rel='Shortcut Icon', type='image/x-icon', href=url_for('favicon.ico'))
+  
+  //- 👇 这里把你的 png 图标换成主角 👇
+  link(rel='icon', type='image/png', href=url_for('favicon.png'))
+  link(rel='Shortcut Icon', type='image/png', href=url_for('favicon.png'))
+  
   link(rel='apple-touch-icon', href=url_for('apple-touch-icon.png'))
   link(rel='apple-touch-icon-precomposed', href=url_for('apple-touch-icon.png'))
   if config.feed
