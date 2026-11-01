@@ -103,7 +103,7 @@ post_copyright:
   author: 
   copyright_text: 
 
-show_category_count: false 
+show_category_count: true
 love: false 
 plantuml: 
   render: "PlantUMLServer" 
